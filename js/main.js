@@ -8,6 +8,11 @@ $(function(){
 	inicilizaMarcadores();
 	$("#botao-reiniciar").click(reiniciaJogo);
 })
+function atualizaTempoInicial(tempo){
+	tempoInicial = tempo;
+	$("#tempo-digitacao").text(tempo);
+}
+
 function atualizaTamanhoFrase(){
 	var frase = $(".frase").text();
 	var numPalavras = frase.split(" ").length;
@@ -29,37 +34,42 @@ function inicializaContadores(){
 })};
 
 function inicilizaCronometro(){
-	var tempoRestante = $("#tempo-digitacao").text();
 
 	campoDigitacao.one("focus", function(){
+	var tempoRestante = $("#tempo-digitacao").text();
 	var cronometroID = setInterval(function(){
 		tempoRestante--;
 		$("#tempo-digitacao").text(tempoRestante);
 		if (tempoRestante < 1){
-			campoDigitacao.attr("disabled", true);
 			clearInterval(cronometroID);
-			campoDigitacao.toggleClass("campo-desativado");
+			finalizaJogo();
 		}
 	},1000);
 })};
+
+function finalizaJogo(){
+	campoDigitacao.attr("disabled", true);
+	campoDigitacao.toggleClass("campo-desativado");
+	inserirPlacar();
+}
+
+
+
 function inicilizaMarcadores(){
-	var frase = $(".frase").text();
 	campoDigitacao.on("input",function(){
+		var frase = $(".frase").text();
 		var digitado = campoDigitacao.val();
 		var comparavel = frase.substr(0,digitado.length);
-		console.log("Digitado:"+ digitado);
-		console.log("Digitado C.:"+ comparavel);
 
 		if (digitado == comparavel){
 			campoDigitacao.addClass("borda-verde");
 			campoDigitacao.removeClass("borda-vermelha");
+
 		}else{
 			campoDigitacao.addClass("borda-vermelha");
 			campoDigitacao.removeClass("borda-verde");
 		}
-	});	
-}
-
+	})};
 
 function reiniciaJogo(){
 	$("#botao-reiniciar").click(function(){
