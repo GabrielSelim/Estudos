@@ -20,7 +20,7 @@
             </li>
             <li>
                 <i class="smal material-icons icones">query_builder</i>
-                <span id="tempo-digitacao">3</span>segundos
+                <span id="tempo-digitacao">3</span> segundos
             </li>
         </ul>
 
@@ -29,16 +29,37 @@
         <div class="botoes">
             <a class="btn-floating btn-large waves-effect waves-light red" id="botao-reiniciar">
                 <i class="material-icons">restore</i>
+            </a>           
+             <a class="btn-floating btn-large waves-effect waves-light green" id="botao-placar">
+                <i class="material-icons">assignment</i>
+            </a>           
+            <a class="btn-floating btn-large waves-effect waves-light blue" id="botao-frase">
+                <i class="material-icons">shuffle</i>
             </a>
         </div>
         <ul class="center">
             <li><span id="contador-caracteres">0</span> caracteres</li>
             <li><span id="contador-palavras">0</span> palavras</li>
         </ul>
+        <section class="placar">
+            <h3 class="center">Placar</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>No. de palavras</th>
+                        <th>Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
     </div>
-
 
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/placar.js"></script>
+    <script src="js/frase.js"></script>
 </body>
 </html>
