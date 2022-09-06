@@ -86,6 +86,6 @@ function atualizaPlacar (){
 			var linha = novaLinha(this.usuario, this.pontos)
 			linha.find(".botao-remover").click(removeLinha);
 			$("tbody").append(linha);
-		})
-	})
-}
+		});
+	});
+};
